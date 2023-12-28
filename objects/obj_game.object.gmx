@@ -141,26 +141,26 @@ alarm[1] = 10;
             <string>///spawn
 
 //spawn coins
-if(irandom(10 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_coins);
+if(irandom(15 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_coins);
 
 //spawn heal
-if(irandom(95 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_health);
+if(irandom(110 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_health);
 
 //spawn enemy: orb
-if(irandom(15 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_enemy_obs);
+if(irandom(24 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_enemy_obs);
 
 //spawn star
 if(irandom(2) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_star);
 
 //spawn mother ship
-if(irandom(120 * add) = 1 &amp;&amp; !paused){
+if(irandom(180 * add) = 1 &amp;&amp; !paused){
     if !(instance_exists(obj_mothership)){
         instance_create(1, irandom_range(90, 454), obj_mothership);
     }
 }
 
 //spawn obstacle wall
-if(irandom(80 * add) = 1 &amp;&amp; !paused &amp;&amp; instance_exists(obj_player)){
+if(irandom(110 * add) = 1 &amp;&amp; !paused &amp;&amp; instance_exists(obj_player)){
     if !(instance_exists(obj_wall)){
         instance_create(958, irandom_range(90, 454), obj_wall);
     }
@@ -175,14 +175,10 @@ if(paused) {
     instance_deactivate_all(1);
     
     //let user make selection
-    if(gamepad_button_check_pressed(0, gp_padd)) select += 1;
-    else if(gamepad_button_check_pressed(0, gp_padu)) select -= 1;
+    if(gamepad_button_check_pressed(0, gp_padd)) {select += 1;}
+    else if(gamepad_button_check_pressed(0, gp_padu)) {select -= 1;}
     
-    //clamp the select variables
-    //if(!exit_sure &amp;&amp; !opt_menu) select = clamp(select, 0, 2);
-    //else if(exit_sure &amp;&amp; !opt_menu) select = clamp(select, 0, 1);
-    //else if(!exit_sure &amp;&amp; opt_menu) select = clamp(select, 0, 2);
-    
+    //clamp variable
     if(!exit_sure || opt_menu) select = clamp(select, 0, 2);
     else if(exit_sure) select = clamp(select, 0, 1);
     
@@ -262,7 +258,7 @@ if(!paused) draw_rectangle(0, 480, 960, 481, false);
 draw_set_font(ft_text);
 draw_set_valign(fa_middle);
 if(instance_exists(obj_player)) {
-    if(global.show_fps)draw_text(32, 79 / 2, "HP: " + string(obj_player.hp) + " | Score: " + string(obj_player.coin) + "| FPS: " + string(fps));
+    if(global.show_fps)draw_text(32, 79 / 2, "HP: " + string(obj_player.hp) + " | Score: " + string(obj_player.coin) + " | FPS: " + string(fps));
     else if(!global.show_fps)draw_text(32, 79 / 2, "HP: " + string(obj_player.hp) + " | Score: " + string(obj_player.coin));
 }
 if(!paused) draw_text(32, ((room_height - 481) / 2) + 481, "X: Ascend. L: Boost. Start: Pause. PS: Exit"); 

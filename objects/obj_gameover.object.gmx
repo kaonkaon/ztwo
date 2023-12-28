@@ -91,8 +91,8 @@ if(final_score &gt; global.hscore){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gamepad_button_check_pressed(0, gp_padd)) select += 1;
-if(gamepad_button_check_pressed(0, gp_padu)) select -= 1;
+            <string>if(gamepad_button_check_pressed(0, gp_padd)) {select += 1; audio_play_sound(snd_select, 10, false)}
+if(gamepad_button_check_pressed(0, gp_padu)) {select -= 1; audio_play_sound(snd_select, 10, false)}
 
 select = clamp(select, 0, 1);
 
