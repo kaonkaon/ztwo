@@ -58,6 +58,7 @@ coin = 0;
 //variables
 y = clamp(y, 16, 528);
 image_angle = (vspeed / 5) * -45;
+hp = clamp(hp, -100, 100)
 
 //controls using A/X button
 if(gamepad_button_check(0, gp_face1)) vspeed = -5 * boost;

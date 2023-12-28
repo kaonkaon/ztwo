@@ -30,17 +30,17 @@
 //var
 timer = 0;
 if(global.dif = 1){
-    init_y = obj_player.y + irandom_range(50, 120);
+    init_y = obj_player.y + irandom_range(-120, 120);
     wall_y_begin = init_y - irandom_range(10, 30);
     wall_y_end = init_y + irandom_range(10, 30);
 }
 else if(global.dif = 2){
-    init_y = obj_player.y + irandom_range(0, 100);
+    init_y = obj_player.y + irandom_range(-100, 100);
     wall_y_begin = init_y - irandom_range(10, 60);
     wall_y_end = init_y + irandom_range(10, 60);
 }
 else if(global.dif = 3){
-    init_y = obj_player.y + irandom_range(0, 10);
+    init_y = obj_player.y + irandom_range(-10, 10);
     wall_y_begin = init_y - irandom_range(10, 150);
     wall_y_end = init_y + irandom_range(10, 150);
 }
@@ -139,8 +139,8 @@ if(timer &gt;= 10 &amp;&amp; instance_exists(obj_player)){
     
     //if player hit the wall
     if(obj_player.y &gt;= wall_y_begin &amp;&amp; obj_player.y &lt;= wall_y_end){
-        if(global.dif = 3) obj_player.hp -= 5;
-        else obj_player.hp -= 2;
+        if(global.dif = 2) obj_player.hp -= 2;
+        else obj_player.hp -= 5;
         
         if(instance_exists(obj_hitscreen)){
             if(!global.reduce){ obj_hitscreen.image_alpha = 1; obj_hitscreen.alarm[0] = 5;}

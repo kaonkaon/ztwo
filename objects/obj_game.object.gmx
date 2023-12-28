@@ -144,7 +144,7 @@ alarm[1] = 10;
 if(irandom(15 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_coins);
 
 //spawn heal
-if(irandom(110 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_health);
+if(irandom(110 * add) = 1 &amp;&amp; !paused &amp;&amp; obj_player.hp &lt; 95) instance_create(960, irandom_range(90, 454), obj_health);
 
 //spawn enemy: orb
 if(irandom(24 * add) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454), obj_enemy_obs);
@@ -154,16 +154,12 @@ if(irandom(2) = 1 &amp;&amp; !paused) instance_create(960, irandom_range(90, 454
 
 //spawn mother ship
 if(irandom(180 * add) = 1 &amp;&amp; !paused){
-    if !(instance_exists(obj_mothership)){
-        instance_create(1, irandom_range(90, 454), obj_mothership);
-    }
+    if !(instance_exists(obj_mothership)) instance_create(1, irandom_range(90, 454), obj_mothership);
 }
 
 //spawn obstacle wall
 if(irandom(110 * add) = 1 &amp;&amp; !paused &amp;&amp; instance_exists(obj_player)){
-    if !(instance_exists(obj_wall)){
-        instance_create(958, irandom_range(90, 454), obj_wall);
-    }
+    if !(instance_exists(obj_wall)) instance_create(958, irandom_range(90, 454), obj_wall);
 }
 
 //pause if start button pressed
