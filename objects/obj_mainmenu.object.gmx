@@ -39,6 +39,7 @@ audio_play_sound(bgm_menu, 19, true);
 select = 0;
 global.show_fps = false;
 global.reduce = false;
+global.dif = 0;
 x = 100;
 y = room_height / 2
 start = false;
@@ -48,8 +49,7 @@ title_move = false;
 title_y = 240;
 hurt = false;
 y_slide = 960;
-
-global.dif = 0;
+select_box_y = 0;
 
 //alarms
 alarm[0] = irandom_range(0, 10)
@@ -60,6 +60,13 @@ global.hscore = ini_read_real("data", "highscore", 0);
 global.show_fps = ini_read_real("data", "fps", 0);
 global.reduce = ini_read_real("data", "reduce", 0);
 ini_close();
+
+//rank
+if(global.hscore &lt; 50000) global.rank = 0;
+else if(global.hscore &gt;= 50000 &amp;&amp; global.hscore &lt; 70000) global.rank = 1;
+else if(global.hscore &gt;= 70000 &amp;&amp; global.hscore &lt; 90000) global.rank = 2;
+else if(global.hscore &gt;= 110000 &amp;&amp; global.hscore &lt; 130000) global.rank = 3;
+else if(global.hscore &gt;= 150000 &amp;&amp; global.hscore &lt; 170000) global.rank = 4;
 </string>
           </argument>
         </arguments>
@@ -144,9 +151,11 @@ if(menu_layer = 0 || menu_layer = 1 || menu_layer = 2) select = clamp(select, 0,
 else if(menu_layer = 3 || menu_layer = 4) select = clamp(select, 3, 3);
 else if(menu_layer = 5) select = clamp(select, 2, 3);
 
+select_box_y = clamp(select_box_y, 330 + (40 * select), 330 + (40 * select));
+
 //choose
-if(gamepad_button_check_pressed(0, gp_padu) &amp;&amp; !start) {select -= 1; audio_play_sound(snd_select, 10, false)}
-else if(gamepad_button_check_pressed(0, gp_padd) &amp;&amp; !start) {select += 1; audio_play_sound(snd_select, 10, false)}
+if(gamepad_button_check_pressed(0, gp_padu) &amp;&amp; !start) {select -= 1; audio_play_sound(snd_select, 10, false); select_box_y -= 40;}
+else if(gamepad_button_check_pressed(0, gp_padd) &amp;&amp; !start) {select += 1; audio_play_sound(snd_select, 10, false); select_box_y += 40;}
 
 //main_menu
 if(gamepad_button_check_pressed(0, gp_face1) &amp;&amp; select = 0 &amp;&amp; menu_layer = 0) {menu_layer = 1; select = 0;} //dificulty
@@ -210,6 +219,13 @@ if(hurt) y_slide -= 20;
 else if(!hurt) y_slide += 20;
 
 y_slide = clamp(y_slide, 140, 960);
+
+//change color based on rank
+if(global.rank = 0) image_blend = c_white;
+else if(global.rank = 1) image_blend = c_aqua;
+else if(global.rank = 2) image_blend = c_lime;
+else if(global.rank = 3) image_blend = c_fuchsia;
+else if(global.rank = 4) image_blend = c_yellow;
 </string>
           </argument>
         </arguments>
@@ -247,10 +263,7 @@ draw_text(room_width / 2, title_y, "Z2");
 
 draw_set_colour(c_red);
 //draw selection box
-if(select = 0) draw_rectangle(0, 330 - 20, room_width, 330 + 20, false);
-else if(select = 1) draw_rectangle(0, 370 - 20, room_width, 370 + 20, false);
-else if(select = 2) draw_rectangle(0, 410 - 20, room_width, 410 + 20, false);
-else if(select = 3) draw_rectangle(0, 450 - 20, room_width, 450 + 20, false);
+draw_rectangle(0, select_box_y - 20, room_width, select_box_y + 20, false);
 
 draw_set_colour(c_white);
 draw_set_font(ft_text);
@@ -274,13 +287,13 @@ else if(menu_layer = 2){
 }
 else if(menu_layer = 3){
     draw_set_font(ft_many_text);
-    draw_text(room_width / 2, 350, "Yellow things add score#Green things heal your HP#Red things is enemy");
+    draw_text(room_width / 2, 350 + 20, "Yellow things add score#Green things heal your HP#Red things is enemy");
     draw_set_font(ft_text);
     draw_text(room_width / 2, 450, "Back");
 }
 else if(menu_layer = 4){
     draw_set_font(ft_many_text);
-    draw_text(room_width / 2, 300, "Aqil Gama Rahmansyah [Kaon] @2023#Game Engine: GameMaker Studio 1.4#VPK Compiler: GayMaker 1.7.7##Sound effect: freesound.org &amp; pixabay.com#Main menu BGM: Prelude No. 3 ‘Encounter with the Unknown’ - Hata Akira#Game Bgm: Nocturnal Dance - SHUNTA#Shockwave - Xivine#World to be Suspended - Moppee Sound#Unholy Insurgency - DM Dokuro#Antartic Reinforcement - DM Dokuro##Nijika is REAL!!!");
+    draw_text(room_width / 2, 300, "Aqil Gama Rahmansyah [Kaon] @2023#Game Engine: GameMaker Studio 1.4#VPK Compiler: GayMaker 1.7.7##Sound effect: freesound.org &amp; pixabay.com#Main menu BGM: Prelude No. 3 ‘Encounter with the Unknown’ - Hata Akira#Game Bgm: Nocturnal Dance - SHUNTA#Memento - MoGura#World to be Suspended - Moppee Sound#Unholy Insurgency - DM Dokuro#Antartic Reinforcement - DM Dokuro#Emotional Catharsis - Private Manbou##Nijika is REAL!!!");
     draw_set_font(ft_text);
     draw_text(room_width / 2, 450, "Back");
 }

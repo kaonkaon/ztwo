@@ -22,6 +22,17 @@ This game made in **2 days**.
 
 ## Changelog
 
+**v1.2.0**
+
+- Make the density of red gradualy increase. (so it doesnt go all out on the begining)
+- Make hit red hit screen more "milder" decreasing its max opacity
+- Rank system. Player color will change depends on your high score (so dont reset your highscore if you want to flex them color)
+- Added vita image on "how to play" page
+- Changed one of bgm: Shockwave - Xifien to: Emotional Catharsis - Private Manbou
+- Added new bgm: Memento - MoGura
+- Getting damaged on "Hurt Me Plenty" difficuly will earn score! idk if its worth taking damage tho
+- Added sound effect when you get into high score
+
 **V1.1.0**
 
 - Make game more playable (By decreasing its difficulty)

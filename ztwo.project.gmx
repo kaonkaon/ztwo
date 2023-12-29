@@ -14,9 +14,11 @@
     <sound>sound\bgm_3</sound>
     <sound>sound\bgm_4</sound>
     <sound>sound\bgm_5</sound>
+    <sound>sound\bgm_6</sound>
     <sound>sound\bgm_over</sound>
     <sound>sound\snd_select</sound>
     <sound>sound\snd_start</sound>
+    <sound>sound\snd_yipee</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
@@ -30,6 +32,8 @@
     <sprite>sprites\spr_shooter</sprite>
     <sprite>sprites\spr_laser</sprite>
     <sprite>sprites\spr_warning</sprite>
+    <sprite>sprites\spr_count</sprite>
+    <sprite>sprites\spr_psvita</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -40,6 +44,7 @@
     <font>fonts\ft_music</font>
   </fonts>
   <objects name="objects">
+    <object>objects\obj_count</object>
     <object>objects\obj_hitscreen</object>
     <object>objects\obj_mainmenu</object>
     <object>objects\obj_gameover</object>
@@ -63,6 +68,8 @@
       <object>objects\obj_warning</object>
     </objects>
     <object>objects\obj_music_info</object>
+    <object>objects\obj_debug</object>
+    <object>objects\obj_psvita</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_mainmenu</room>

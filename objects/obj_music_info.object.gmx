@@ -108,11 +108,12 @@ draw_set_colour(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(ft_music);
-if(audio_is_playing(bgm_1))draw_text(x, y, "Shockwave#Xivine");
+if(audio_is_playing(bgm_1))draw_text(x, y, "Memento#MoGura");
 else if(audio_is_playing(bgm_2))draw_text(x, y, "Nocturnal Dance#SHUNTA");
 else if(audio_is_playing(bgm_3))draw_text(x, y, "World to be Suspended#Moppee Sound");
 else if(audio_is_playing(bgm_4))draw_text(x, y, "Unholy Insurgency#DM Dokuro");
 else if(audio_is_playing(bgm_5))draw_text(x, y, "Antartic Reinforcement#DM Dokuro");
+else if(audio_is_playing(bgm_6))draw_text(x, y, "Emotional Catharsis#Private Manbou");
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

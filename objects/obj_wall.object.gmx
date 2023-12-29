@@ -143,8 +143,13 @@ if(timer &gt;= 10 &amp;&amp; instance_exists(obj_player)){
         else obj_player.hp -= 5;
         
         if(instance_exists(obj_hitscreen)){
-            if(!global.reduce){ obj_hitscreen.image_alpha = 1; obj_hitscreen.alarm[0] = 5;}
+            if(!global.reduce){ obj_hitscreen.image_alpha = 0.3; obj_hitscreen.alarm[0] = 5;}
             audio_play_sound(snd_hit, 10, false);
+            
+            obj_player.get_hit = true;
+            obj_player.alarm[0] = 10;
+            
+            if(global.dif = 3 &amp;&amp; instance_exists(obj_player)) obj_player.coin += (global.coin_earn * 0.1);
             
             obj_game.vibrate = 10;
         }

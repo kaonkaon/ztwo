@@ -27,11 +27,14 @@
             <kind>1</kind>
             <string>final_score = obj_player.coin;
 
-if(audio_is_playing(bgm_1)) audio_stop_sound(bgm_1);
-else if(audio_is_playing(bgm_2)) audio_stop_sound(bgm_2);
-else if(audio_is_playing(bgm_3)) audio_stop_sound(bgm_3);
-else if(audio_is_playing(bgm_4)) audio_stop_sound(bgm_4);
-else if(audio_is_playing(bgm_5)) audio_stop_sound(bgm_5);
+//if(audio_is_playing(bgm_1)) audio_stop_sound(bgm_1);
+//else if(audio_is_playing(bgm_2)) audio_stop_sound(bgm_2);
+//else if(audio_is_playing(bgm_3)) audio_stop_sound(bgm_3);
+//else if(audio_is_playing(bgm_4)) audio_stop_sound(bgm_4);
+//else if(audio_is_playing(bgm_5)) audio_stop_sound(bgm_5);
+//else if(audio_is_playing(bgm_6)) audio_stop_sound(bgm_6);
+
+audio_stop_all();
 
 audio_play_sound(bgm_over, 10, true);
 
@@ -42,6 +45,7 @@ active = false;
 alarm[0] = 5;
 
 if(final_score &gt; global.hscore){
+    audio_play_sound(snd_yipee, 10, false);
     ini_open("data.ini");
     ini_write_real("data", "highscore", final_score);
     ini_close();

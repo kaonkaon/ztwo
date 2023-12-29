@@ -31,6 +31,30 @@
 boost = 1;
 hp = 100;
 coin = 0;
+get_hit = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>get_hit = false;
 </string>
           </argument>
         </arguments>
@@ -69,6 +93,16 @@ else boost = 1;
 
 //make particles
 instance_create(x, y, obj_player_particle)
+
+//make player red when get hit, only on reduce settings
+if(get_hit) image_blend = c_red;
+
+//change color based on rank
+if(global.rank = 0 &amp;&amp; !get_hit) image_blend = c_white;
+else if(global.rank = 1 &amp;&amp; !get_hit) image_blend = c_aqua;
+else if(global.rank = 2 &amp;&amp; !get_hit) image_blend = c_lime;
+else if(global.rank = 3 &amp;&amp; !get_hit) image_blend = c_fuchsia;
+else if(global.rank = 4 &amp;&amp; !get_hit) image_blend = c_yellow;
 </string>
           </argument>
         </arguments>
